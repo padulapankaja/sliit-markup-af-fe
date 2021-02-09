@@ -4,7 +4,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 
 // import redux
 import { Provider } from 'react-redux'
-import {store, persistor } from './Components/Redux/Store/Store'
+import { store, persistor } from './Components/Redux/Store/Store'
 
 class App extends Component {
   constructor() {
@@ -22,10 +22,10 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <PersistGate persistor={persistor} >
-        <RootRouter/>
-      </PersistGate>
-    </Provider>
+        <PersistGate persistor={persistor} >
+          <RootRouter />
+        </PersistGate>
+      </Provider>
     );
   }
 }

@@ -6,8 +6,7 @@ export function signin(email, password) {
 
 }
 
-
-export function register(email, password) {
+export function register(fname, lname, email, password) {
 
 
 }
