@@ -35,6 +35,11 @@ let indexRoutes = [
         component: Login,
         exact: true,
     },
+    {
+        path: "/*",
+        name: "Login",
+        component: Login,
+      },
 
 ];
 
