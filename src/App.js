@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-
-
-
 import RootRouter from './RootRouter'
 import { PersistGate } from 'redux-persist/integration/react'
 
