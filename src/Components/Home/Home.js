@@ -1,67 +1,65 @@
 import React, { Component } from 'react';
 import './home.css'
+import NavBar from '../NavBar/Navbar'
 import hero from '../img/hero.png'
 import about from '../img/about.png'
 import admission from '../img/admission.png'
 import why from '../img/why.png'
 import determine from '../img/determine.png'
-
+import { register_as_student, register_as_teacher, setToast, setErrorToast } from '../Controller/User.controller'
 class Home extends Component {
     constructor() {
         super();
         this.state = {
-
+            name: '',
+            email: '',
+            password: ''
         };
-
-
-
+    }
+    formValueChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value })
     }
 
+    RegsiterStudent = async (e) => {
+        e.preventDefault()
+        const result = await register_as_student(this.state.name, this.state.email, this.state.password)
+
+        if (result.status == 201) {
+            setToast("Successfully Created")
+            this.clear()
+        } else if(result.status == 422) {
+            setErrorToast("Please sent valid data")
+        
+        } else if(result.status == 406) {
+            setErrorToast("User already exists")
+        }
+    }
+    RegsiterTeacher = async (e) => {
+        e.preventDefault()
+        const result = await register_as_teacher(this.state.name, this.state.email, this.state.password)
+        if (result.status == 201) {
+            setToast("Successfully Created")
+            this.clear()
+        } else if(result.status == 422) {
+            setErrorToast("Please sent valid data")
+        
+        } else if(result.status == 406) {
+            setErrorToast("User already exists")
+        }
+    }
+
+    clear = () => {
+        this.setState({
+            name: '',
+            email: '',
+            password: ''
+        })
+    }
     render() {
         return (
             <div>
                 <div className="top_container">
-                    <header className="header_section">
-                        <div className="container">
-                            <nav className="navbar navbar-expand-lg custom_nav-container ">
-                                <a className="navbar-brand" href="index.html">
-                                    <span>
-                                        Fanadesh
-            </span>
-                                </a>
-                                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span className="navbar-toggler-icon"></span>
-                                </button>
-
-                                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <div className="d-flex ml-auto flex-column flex-lg-row align-items-center">
-                                        <ul className="navbar-nav  ">
-                                            <li className="nav-item active">
-                                                <a className="nav-link" href="index.html"> Home <span className="sr-only"></span></a>
-                                            </li>
-                                            <li className="nav-item ">
-                                                <a className="nav-link" href="about.html"> Courses </a>
-                                            </li>
-
-                                            <li className="nav-item ">
-                                                <a className="nav-link" href="admission.html"> Login </a>
-                                            </li>
-
-                                            <li className="nav-item">
-                                                <a className="nav-link" href="why.html"> Register </a>
-                                            </li>
-
-                                            <li className="nav-item">
-                                                <a className="nav-link" href="contact.html">My Account</a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                    </header>
+                    <NavBar />
                     <section class="hero_section">
                         <div class="hero-container container">
                             <div class="hero_detail-box">
@@ -189,6 +187,53 @@ class Home extends Component {
                     </section>
                 </div>
 
+                <section class="contact_section ">
+
+                    <div class="container" id="register-section">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-center d-md-block">
+                                    <h2>
+                                        Register
+        </h2>
+                                </div>
+                                <form action="">
+                                    <div class="contact_form-container">
+                                        <div>
+                                            <div>
+                                                <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={(e) => this.formValueChange(e)} required />
+                                            </div>
+                                            <div>
+                                                <input type="email" placeholder="Email" value={this.state.email} name="email" onChange={(e) => this.formValueChange(e)} required />
+                                            </div>
+                                            <div>
+                                                <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={(e) => this.formValueChange(e)} required />
+                                            </div>
+                                            <div class="mt-5">
+                                                <button className="mb-1 mr-1" onClick={(e) => this.RegsiterStudent(e)}>
+                                                    Student
+              </button>
+                                                <button onClick={(e) => this.RegsiterTeacher(e)}>
+                                                    Teacher
+              </button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact_img-box">
+                                    <img src="images/students.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
                 <section class="info_section layout_padding-top">
                     <div class="info_logo-box">
                         <h2>
@@ -278,7 +323,7 @@ class Home extends Component {
 
                 <section class="container-fluid footer_section">
                     <p>
-                        Copyright &copy; 2019 All Rights Reserved By EduLanka<a href=""></a>
+                        Copyright &copy; 2021 All Rights Reserved By EduLanka<a href=""></a>
                     </p>
                 </section>
             </div>

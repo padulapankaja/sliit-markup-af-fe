@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { signin } from '../Controller/User.controller'
 import './Login.css'
+import login from '../img/login.jpg'
 
 class Login extends Component {
     constructor() {
@@ -22,10 +23,7 @@ class Login extends Component {
         return (
             <div>
                 <div className="sidenav">
-                    <div className="login-main-text">
-                        <h2>Application Login Page</h2>
-                        <p>Login or register from here to access.</p>
-                    </div>
+                    <img src={login} alt="" className="img-fluid" />
                 </div>
                 <div className="main">
                     <div className="col-md-6 col-sm-12">
