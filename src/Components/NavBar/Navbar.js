@@ -17,6 +17,7 @@ class NavBar extends Component {
 
     render() {
         return (
+            <div className="top_container">
             <header className="header_section">
                 <div className="container">
                     <nav className="navbar navbar-expand-lg custom_nav-container ">
@@ -37,7 +38,10 @@ class NavBar extends Component {
                                         <a className="nav-link" href="index.html"> Home <span className="sr-only"></span></a>
                                     </li>
                                     <li className="nav-item ">
-                                        <a className="nav-link" href="about.html"> Courses </a>
+                                    <Link
+                                            to="/courses"
+                                            className="nav-link"
+                                        > Courses </Link>
                                     </li>
 
                                     <li className="nav-item">
@@ -62,7 +66,31 @@ class NavBar extends Component {
                         </div>
                     </nav>
                 </div>
+                <section class="hero_section">
+                        <div class="hero-container container">
+                            <div class="hero_detail-box">
+                                <h1>
+                                    Best way
+                                    to fund
+                                    your study
+                                abroad</h1>
+                                <p>
+                                    ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                magna aliqua. Ut enim ad minim veniam </p>
+                                <div class="hero_btn-continer">
+                                    <a href="" class="call_to-btn btn_white-border">
+                                        Read More</a>
+                                </div>
+                            </div>
+                            {/* <div class="hero_img-container">
+                                <div>
+                                    <img src={hero} alt="" class="img-fluid" />
+                                </div>
+                            </div> */}
+                        </div>
+                    </section>
             </header>
+            </div>
         );
     }
 }
