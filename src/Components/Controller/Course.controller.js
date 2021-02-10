@@ -31,3 +31,8 @@ export async function get_single_course_details(id) {
     const result = await axios.get(`${Config.host}${Config.port}/api/course/${id}`,)
     return result
 }
+export async function get_courses_by_teacher(id) {
+
+    const result = await axios.get(`${Config.host}${Config.port}/api/course/byteacher/${id}`,)
+    return result
+}

@@ -18,20 +18,25 @@ class App extends React.Component {
         let routes = indexRoutes;
 
         let checkSignedIn = this.props.auth.isAuthenticated;
+        let role = ""
+        if(checkSignedIn){
+            role = this.props.auth.user.data.user_details.role;
+        }
 
 
         if (checkSignedIn == true) {
-            routes = [...protectedRoutes, ...routes];
+            routes = [ ...routes];
         }
 
-        // if(checkSignedIn == true && role == "manager"){
-        //  routes = [ ...managerRoutes, ...routes ];
-        // }
+        if(checkSignedIn == true && role == "teacher"){
+         routes = [ ...protectedRoutes, ...routes ];
+        }
 
         // if( checkSignedIn == true && role == "admin" ){
         //   routes = [ ...adminRoutes ,...managerRoutes, ...routes ];
         // }
-
+        console.log(role);
+        console.log(routes);
         return routes;
     }
 

@@ -69,8 +69,8 @@ class Login extends Component {
                                     <label>Password</label>
                                     <input type="password" name="password" className="form-control" value={this.state.password} placeholder="Password" required onChange={(e) => this.formValueChange(e)} />
                                 </div>
-                                <button className="btn btn-black mr-1" onClick={(e) => this.LoginasTeacher(e)}>Login as Teacher</button>
-                                <button className="btn btn-secondary ml-2" onClick={(e) => this.LoginasStudent(e)}>Login as Student</button>
+                                <button className="btn btn-black mr-1 ml-2 mt-2" onClick={(e) => this.LoginasTeacher(e)}>Login as Teacher</button>
+                                <button className="btn btn-secondary ml-2 mt-2" onClick={(e) => this.LoginasStudent(e)}>Login as Student</button>
                             </form>
                         </div>
                     </div>

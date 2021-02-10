@@ -20,10 +20,10 @@ class Footer extends Component {
     render() {
         return (
             <div>
-  <section class="info_section layout_padding-top">
+                <section class="info_section layout_padding-top">
                     <div class="info_logo-box">
                         <h2>
-                            Fanadesh
+                            EduLanka
           </h2>
                     </div>
                     <div class="container layout_padding2">
