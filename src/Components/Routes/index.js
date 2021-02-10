@@ -14,7 +14,7 @@ import Login from '../Login/Login'
 let indexRoutes = [
 
     {
-        path: "/home",
+        path: "/",
         name: "Home",
         component: Home,
         exact: true,
@@ -30,15 +30,15 @@ let indexRoutes = [
     },
     // sign in route
     {
-        path: "/",
+        path: "/login",
         name: "Login",
         component: Login,
         exact: true,
     },
     {
         path: "/*",
-        name: "Login",
-        component: Login,
+        name: "Home",
+        component: Home,
       },
 
 ];
