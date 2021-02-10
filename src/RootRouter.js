@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, useHistory, withRouter } from '
 import { connect } from 'react-redux'
 import indexRoutes from './Components/Routes/index'
 import protectedRoutes from './Components/Routes/regitered_router'
+import studentRoutes from './Components/Routes/student_router'
 // import adminRoutes from './routes/adminroutes'
 // import loginUserRoutes from './routes/loginUser'
 // import managerRoutes from './routes/manager.routes'
@@ -30,6 +31,10 @@ class App extends React.Component {
 
         if(checkSignedIn == true && role == "teacher"){
          routes = [ ...protectedRoutes, ...routes ];
+        }
+
+        if(checkSignedIn == true && role == "student"){
+         routes = [ ...studentRoutes, ...routes ];
         }
 
         // if( checkSignedIn == true && role == "admin" ){

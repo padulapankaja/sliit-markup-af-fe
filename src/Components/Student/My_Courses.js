@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPenAlt, faEye, faEnvelope, faBan } from '@fortawesome/free-solid-svg-icons'
 import { Line as LineChart, Bar, Doughnut } from 'react-chartjs-2';
 
-class ViewStatistics extends Component {
+class MyCourses extends Component {
     constructor() {
         super();
         this.state = {
@@ -29,7 +29,7 @@ class ViewStatistics extends Component {
                         <div className="row mx-1">
                             <div className="col-12 px-0">
                                 <h6 className="text-dark bold-normal py-3 bg-white shadow-sm px-3 mt-3 rounded">
-                                    System Overview
+                                    My Courses
                                     </h6>
                             </div>
 
@@ -120,5 +120,5 @@ const options2 = {
 const mapStateToProps = (state) => ({
     auth: state.auth || {},
 });
-export default connect(mapStateToProps, null)(withRouter(ViewStatistics));
+export default connect(mapStateToProps, null)(withRouter(MyCourses));
 

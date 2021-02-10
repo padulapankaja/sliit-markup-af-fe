@@ -4,7 +4,7 @@ import Config from '../Controller/Config.json'
 import { toast } from 'react-toastify';
 
 
-export async function insert_course(tiite,
+export async function insert_course(title,
     img,
     description,
     link,
@@ -12,7 +12,7 @@ export async function insert_course(tiite,
     teacher_id) {
 
     const result = await axios.post(`${Config.host}${Config.port}/api/course/create`, {
-        tiite,
+        title,
         img,
         description,
         link,

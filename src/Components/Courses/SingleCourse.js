@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import NavBar from '../NavBar/Navbar'
 import Footer from '../Footer/Footer'
 import './course.css'
+import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom'
 import { insert_course, get_single_course_details } from '../Controller/Course.controller'
 class Courses extends Component {
     constructor() {
@@ -84,11 +86,18 @@ class Courses extends Component {
                                         <p>
                                             No of Students : {course.noOfStudents}
                                         </p>
-                                        <div class="">
-                                            <a class="call_to-btn btn_white-border">
-                                                Add To My Collection
+
+                                        {this.props.auth.isAuthenticated && this.props.auth.user.data.user_details.role != "teacher" || this.props.auth.isAuthenticated == true ?
+
+                                            <div class="">
+                                                <a class="call_to-btn btn_white-border">
+                                                    Add To My Collection
                                             </a>
-                                        </div>
+                                            </div> : null
+                                        }
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -103,4 +112,7 @@ class Courses extends Component {
 }
 
 
-export default Courses;
+const mapStateToProps = (state) => ({
+    auth: state.auth || {},
+});
+export default connect(mapStateToProps, null)(withRouter(Courses));

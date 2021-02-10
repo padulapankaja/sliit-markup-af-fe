@@ -78,9 +78,10 @@ class NavBar extends Component {
                                         }
                                         {
                                             this.props.auth.isAuthenticated != true ? null
-                                                : <li className="nav-item">
-                                                    <a className="nav-link" href="contact.html">My Courses</a>
-                                                </li>
+                                                : <Link
+                                                    to="/dashboard"
+                                                    className="nav-link"
+                                                > Dashboard </Link>
                                         }
 
 

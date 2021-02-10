@@ -33,7 +33,7 @@ class Courses extends Component {
 
     display_all_courses = (course) => {
         return (
-            <div key={course._id} className="col-md-6">
+            <div key={course._id} className="col-md-6 mt-3">
                 <div className="card booking-card" style={{ textAlign: 'left' }}>
                     <div className="view overlay">
                         <img className="card-img-top" src={`${course.img}`} alt="Card image cap" />
@@ -47,13 +47,10 @@ class Courses extends Component {
 
                         <p className="m-0"> • No Of Student : {course.noOfStudents}</p>
                         <p className="card-text">{course.description}</p>
-                        {/* <p className="m-0"> • Created By {course.teacher_id}</p> */}
                         <Link
-                                            to={`/courses/${course._id}`}
-                                            className="btn btn-flat deep-purple-text p-1 mx-0 mb-0"
-                                        > View More </Link>
-
-                       
+                            to={`/courses/${course._id}`}
+                            className="btn btn-flat deep-purple-text p-1 mx-0 mb-0"
+                        > View More </Link>
                     </div>
 
                 </div>

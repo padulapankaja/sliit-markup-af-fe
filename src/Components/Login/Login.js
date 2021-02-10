@@ -26,6 +26,7 @@ class Login extends Component {
 
         signin_student(this.state.email, this.state.password).then(result => {
             this.props.setCurrentUser(result.data);
+            this.props.history.push('/dashboard')
 
         }).catch(err => {
             if (err.response.status == 406) {
@@ -41,6 +42,8 @@ class Login extends Component {
 
         signin_teacher(this.state.email, this.state.password).then(result => {
             this.props.setCurrentUser(result.data);
+            this.props.history.push('/dashboard')
+
 
         }).catch(err => {
             if (err.response.status == 406) {

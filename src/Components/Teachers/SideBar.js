@@ -68,11 +68,10 @@ class SideBar extends React.Component {
         const role = this.props.auth.user.data.user_details.role;
         let isTeacher = false
         var role_name = "";
-        if (role == "teacher")
-           {
+        if (role == "teacher") {
             role_name = "Teacher"
             isTeacher = true
-           }
+        }
         else if (role == "student")
             role_name = "Student"
         console.log("Users role", role);
@@ -80,7 +79,7 @@ class SideBar extends React.Component {
 
         return (
             <>
-            
+
                 <nav className="navbar navbar-dark bg-dark py-0 shadow-sm  fixed-top">
                     <span className="navbar-brand mb-0 h6 text-light ml-2">Dashboard
                          <FontAwesomeIcon onClick={() => this.setState({ side_bar_toggle: !this.state.side_bar_toggle })} icon={faBars} className="ml-4 click show-icon"></FontAwesomeIcon> </span>
@@ -136,7 +135,12 @@ class SideBar extends React.Component {
                                 </li>
                             </Link>
                             : ''}
-
+                        <li className="listitem" className={`listitem ${active == 'sitemanagers' && 'active_category'}`}>
+                            <Link to="/">
+                                <h6 className={`dd categorylink px-2 ${active == 'sitemanagers' && 'active_category'}`}>
+                                    <FontAwesomeIcon icon={faUser} className="mx-3 sidebar-icon"></FontAwesomeIcon>Go to Home
+                                </h6></Link>
+                        </li>
                         <li onClick={() => this.signoutuser()} className={`listitem click`}>
                             <h6 className={`dd categorylink px-2 `} style={{ fontSize: '98%' }}>
                                 <FontAwesomeIcon icon={faSignOutAlt} className="mx-3 sidebar-icon"></FontAwesomeIcon>Logout
