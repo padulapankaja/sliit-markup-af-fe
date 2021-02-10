@@ -4,7 +4,8 @@ import Footer from '../Footer/Footer'
 import './course.css'
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom'
-import { insert_course, get_single_course_details } from '../Controller/Course.controller'
+import { insert_course, get_single_course_details, add_my_collcriton_api } from '../Controller/Course.controller'
+import { setErrorToast, setToast } from '../Controller/User.controller'
 class Courses extends Component {
     constructor() {
         super();
@@ -17,7 +18,6 @@ class Courses extends Component {
     }
 
     componentDidMount() {
-
         this.get_single()
     }
 
@@ -30,6 +30,20 @@ class Courses extends Component {
             console.log(this.state.course);
         }).catch(err => {
             console.log(err.response);
+
+        })
+    }
+    add_my_collection = () => {
+        add_my_collcriton_api(this.props.auth.user.data.user_details._id, this.props.match.params.id, this.props.auth.user.data.token).then(result => {
+            // console.log(result.data.data);
+
+            setToast("Successfully Added")
+        }).catch(err => {
+            console.log(err.response);
+            if (err.response.status == 401) {
+
+                setErrorToast("Unauthorized")
+            }
 
         })
     }
@@ -89,7 +103,7 @@ class Courses extends Component {
 
                                         {this.props.auth.isAuthenticated && this.props.auth.user.data.user_details.role != "teacher" || this.props.auth.isAuthenticated == true ?
 
-                                            <div class="">
+                                            <div class="" onClick={() => this.add_my_collection()}>
                                                 <a class="call_to-btn btn_white-border">
                                                     Add To My Collection
                                             </a>
