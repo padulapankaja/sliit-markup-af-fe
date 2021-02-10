@@ -1,12 +1,6 @@
 import Protected from "../Protected/Protected";
 import ViewStat from "../Teachers/ViewStatistic";
 import AddCourses from "../Teachers/AddCourses";
-
-
-
-
-
-
 let protectedRoutes = [
 
     {

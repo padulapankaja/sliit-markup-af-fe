@@ -2,9 +2,6 @@ import MyCourses from "../Student/My_Courses";
 
 
 
-
-
-
 let studentRoutes = [
 
     {

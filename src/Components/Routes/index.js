@@ -53,7 +53,7 @@ let indexRoutes = [
         path: "/*",
         name: "Home",
         component: Home,
-      },
+    },
 
 ];
 

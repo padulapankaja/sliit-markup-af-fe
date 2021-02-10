@@ -78,8 +78,8 @@ class Home extends Component {
                 <NavBar />
 
 
-            <Content/>
-         
+                <Content />
+
 
                 <section class="contact_section ">
 
