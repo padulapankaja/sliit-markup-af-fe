@@ -6,6 +6,8 @@ import about from '../img/about.png'
 import admission from '../img/admission.png'
 import why from '../img/why.png'
 import determine from '../img/determine.png'
+import { withRouter } from "react-router-dom";
+
 import { register_as_student, register_as_teacher, setToast, setErrorToast } from '../Controller/User.controller'
 class Home extends Component {
     constructor() {
@@ -22,30 +24,42 @@ class Home extends Component {
 
     RegsiterStudent = async (e) => {
         e.preventDefault()
-        const result = await register_as_student(this.state.name, this.state.email, this.state.password)
-
-        if (result.status == 201) {
+        
+        register_as_student(this.state.name, this.state.email, this.state.password).then(result=>{
             setToast("Successfully Created")
             this.clear()
-        } else if(result.status == 422) {
-            setErrorToast("Please sent valid data")
-        
-        } else if(result.status == 406) {
-            setErrorToast("User already exists")
-        }
+            this.props.history.push("/login");
+        }).catch(err=>{
+            console.log(err.response);
+                if(err.response.status == 406){
+                    setErrorToast("User already exists")
+                    this.clear()
+                    // this.props.history.push("/login");
+                }else if(err.response.status == 422){
+                    setErrorToast("Please sent valid data")
+                    this.clear()
+                }
+        })  
     }
     RegsiterTeacher = async (e) => {
         e.preventDefault()
-        const result = await register_as_teacher(this.state.name, this.state.email, this.state.password)
-        if (result.status == 201) {
+       register_as_teacher(this.state.name, this.state.email, this.state.password).then(result=>{
             setToast("Successfully Created")
             this.clear()
-        } else if(result.status == 422) {
-            setErrorToast("Please sent valid data")
-        
-        } else if(result.status == 406) {
-            setErrorToast("User already exists")
-        }
+            this.props.history.push("/login");
+        }).catch(err=>{
+            console.log(err.response);
+                if(err.response.status == 406){
+                    setErrorToast("User already exists")
+                    this.clear()
+                    // this.props.history.push("/login");
+                }else if(err.response.status == 422){
+                    setErrorToast("Please sent valid data")
+                    this.clear()
+                }
+        })  
+
+      
     }
 
     clear = () => {
@@ -332,4 +346,4 @@ class Home extends Component {
 }
 
 
-export default Home;
+export default withRouter(Home);

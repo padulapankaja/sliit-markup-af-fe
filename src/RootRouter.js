@@ -7,7 +7,9 @@ import protectedRoutes from './Components/Routes/regitered_router'
 // import adminRoutes from './routes/adminroutes'
 // import loginUserRoutes from './routes/loginUser'
 // import managerRoutes from './routes/manager.routes'
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+toast.configure() 
 
 
 class App extends React.Component {
